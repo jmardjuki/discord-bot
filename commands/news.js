@@ -22,19 +22,21 @@ module.exports = {
     axios.request(news_list).then((response) => {
       const $ = cheerio.load(response.data);
       let news = [];
-      console.log($('.date').length)
       $('.date').each((i, elm) => {
+        if (i >= args) {
+          return(news)
+        }
         news.push({
           date: $(elm).text().trim(),
           category: $(elm).next().text().trim(),
           name: $(elm).next().next().text().trim(),
           link: base_url + $(elm).next().next().children().attr('href'),
         });
-        console.log("my i is" + i);
       });
       return(news);
     })
     .then((news) => {
+      console.log(news);
       message.channel.send(news[0].date + '\n' + news[0].category
         + '\n' + news[0].name + '\n' + news[0].link);
     });
