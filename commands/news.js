@@ -12,12 +12,10 @@ module.exports = {
   execute(message, args) {
     if (!args.length)
       return message.channel.send('You didn\'t provide any arguments');
-    if (isNaN(args)) {
+    if (isNaN(args))
       return message.channel.send('That doesn\'t seem to be a valid number.');
-    }
-    if (args <= 0 || args > 50) {
-      return message.channel.send('You need to input number between 1 to 50');
-    }
+    if (args <= 0 || args > 10)
+      return message.channel.send('You need to input number between 1 to 10');
     message.channel.send('Getting news');
     axios.request(news_list).then((response) => {
       const $ = cheerio.load(response.data);
@@ -36,9 +34,10 @@ module.exports = {
       return(news);
     })
     .then((news) => {
-      console.log(news);
-      message.channel.send(news[0].date + '\n' + news[0].category
-        + '\n' + news[0].name + '\n' + news[0].link);
+      news.forEach(function(data, i) {
+        message.channel.send(data.date + '\t' + data.category
+          + '\n' + data.name + '\n' + data.link);
+      });
     });
   },
 };
