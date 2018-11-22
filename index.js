@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+const schedule = require('node-schedule');
+const { prefix, token, feedChannelId } = require('./config.json');
 
 const client = new Discord.Client();
 
@@ -11,6 +12,10 @@ for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
+
+let j = schedule.scheduleJob('1 * * * * *', function() {
+  client.channels.get(feedChannelId).send("Test")
+});
 
 const cooldowns = new Discord.Collection();
 
