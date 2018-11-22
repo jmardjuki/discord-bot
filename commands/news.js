@@ -10,12 +10,15 @@ module.exports = {
   usage: '<news> <num>',
   cooldown: 5,
   execute(message, args) {
-    if (!args.length)
+    if (!args.length) {
       return message.channel.send('You didn\'t provide any arguments');
-    if (isNaN(args))
+    }
+    if (isNaN(args)) {
       return message.channel.send('That doesn\'t seem to be a valid number.');
-    if (args <= 0 || args > 10)
+    }
+    if (args <= 0 || args > 10) {
       return message.channel.send('You need to input number between 1 to 10');
+    }
     message.channel.send('Getting news');
     axios.request(news_list).then((response) => {
       const $ = cheerio.load(response.data);
