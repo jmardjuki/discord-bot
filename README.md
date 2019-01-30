@@ -8,6 +8,6 @@ Planned feature
     Refresh avery few min
 - Twitter stalk
 - Get member data
-   - Static most of the time, just crap one new single out (can automate too)
+   - Static most of the time, just scrape once new single out (can automate too)
 - Schedule
 - Alert new video (youtube)
