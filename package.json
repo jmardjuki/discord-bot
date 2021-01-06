@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/jmardjuki/discord-bot#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bufferutil": "^4.0.0",
     "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.3.2",
     "libsodium-wrappers": "^0.7.3",
+    "node-schedule": "^1.3.2",
     "request": "^2.87.0",
     "snekfetch": "^4.0.4",
     "uws": "^10.148.1"

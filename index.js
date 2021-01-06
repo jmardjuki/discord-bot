@@ -2,6 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const schedule = require('node-schedule');
 const { prefix, token, feedChannelId } = require('./config.json');
+console.log(token);
 
 const client = new Discord.Client();
 
